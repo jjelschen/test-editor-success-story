@@ -22,6 +22,7 @@ SRC ?= contents
 CONFIG ?= config
 BIB ?= bib/test-editor-success-story.bib
 TEMPLATE ?= templates/pandoc-reference.docx
+HTMLBEFOREBODY ?= templates/before-body.html
 HTMLSTYLE ?= templates/htmlstyle.css
 
 ## output directories
@@ -71,7 +72,7 @@ $(TEXOUT)/$(BASENAME).tex: $(BIB) $(MD_FILES) $(FIGURES)
 
 $(WEBOUT)/$(BASENAME).html: $(BIB) $(MD_FILES) $(FIGURES) $(HTMLSTYLE)
 	$(MKDIR) -p $(WEBOUT)
-	$(PANDOC) --section-divs --toc -H $(HTMLSTYLE) \
+	$(PANDOC) --section-divs --toc -H $(HTMLSTYLE) --template=templates/default-with-abstract \
 	--self-contained -t html5 --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
 
 
