@@ -5,6 +5,7 @@ secLabels: "roman"
 documentclass: "scrartcl"
 title: Der Test-Editor
 subtitle: Akzeptanztests wie sie sein sollten
+author: Jan Jelschen
 abstract: |
   Eine Kernproblematik bei der Erstellung von Akzeptanztests ist, dass zur Formulierung Fachwissen nötig ist, über das in der Regel nur die Anwender verfügen, die Automatisierung aber nur von Software-Entwicklern mit den nötigen Programmierkenntnisse durchgeführt werden kann. Die Qualitätssicherung wird dadurch fehleranfällig und bremst den Entwicklungsprozess insgesamt aus, weil ganz oder teilweise auf manuelles Testen gesetzt wird. Im schlimmsten Fall erfolgt die Abnahme ganz ohne Akzeptanztests.
 

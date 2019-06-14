@@ -18,6 +18,7 @@ DELETE ?= /bin/rm -f
 
 ## project metadata and source files
 BASENAME ?= test-editor-success-story
+DATE ?= $(shell date "+%d.%m.%Y")
 SRC ?= contents
 CONFIG ?= config
 BIB ?= bib/test-editor-success-story.bib
@@ -56,23 +57,23 @@ all: docx pdf html
 
 $(PLAINOUT)/$(BASENAME).txt: $(BIB) $(MD_FILES) $(FIGURES)
 	$(MKDIR) -p $(PLAINOUT)
-	$(PANDOC) --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ -t plain --bibliography $(BIB) $(MD_FILES)
+	$(PANDOC) -M date="$(DATE)" --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ -t plain --bibliography $(BIB) $(MD_FILES)
 
 $(PRINTOUT)/$(BASENAME).docx: $(BIB) $(MD_FILES) $(FIGURES)
 	$(MKDIR) -p $(PRINTOUT)
-	$(PANDOC) --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --reference-doc $(TEMPLATE) --bibliography $(BIB) $(MD_FILES)
+	$(PANDOC) -M date="$(DATE)" --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --reference-doc $(TEMPLATE) --bibliography $(BIB) $(MD_FILES)
 
 $(PRINTOUT)/$(BASENAME).pdf: $(BIB) $(MD_FILES) $(FIGURES)
 	$(MKDIR) -p $(PRINTOUT)
-	$(PANDOC) -H $(CONFIG)/header.tex --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
+	$(PANDOC) -M date="$(DATE)" -H $(CONFIG)/header.tex --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
 	
 $(TEXOUT)/$(BASENAME).tex: $(BIB) $(MD_FILES) $(FIGURES)
 	$(MKDIR) -p $(TEXOUT)
-	$(PANDOC) -H $(CONFIG)/header.tex --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
+	$(PANDOC) -M date="$(DATE)" -H $(CONFIG)/header.tex --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
 
 $(WEBOUT)/$(BASENAME).html: $(BIB) $(MD_FILES) $(FIGURES) $(HTMLSTYLE)
 	$(MKDIR) -p $(WEBOUT)
-	$(PANDOC) --section-divs --toc -H $(HTMLSTYLE) --template=templates/default-with-abstract \
+	$(PANDOC) -M date="$(DATE)" --section-divs --toc -H $(HTMLSTYLE) --template=templates/default-with-abstract \
 	--self-contained -t html5 --number-sections -F $(METAVARS) -F $(CROSSREF) -F $(CITEPROC) -f markdown+smart -so $@ --bibliography $(BIB) $(MD_FILES)
 
 
