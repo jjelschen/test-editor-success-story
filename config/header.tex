@@ -1,0 +1,6 @@
+\usepackage{xpatch}
+
+\setkomafont{title}{\normalfont\bfseries}
+\makeatletter
+\xpatchcmd{\maketitle}{\titlefont\huge}{\titlefont\small}{}{}
+\makeatother

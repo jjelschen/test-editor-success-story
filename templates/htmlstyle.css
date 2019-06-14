@@ -1,0 +1,20 @@
+<style>
+
+bocy			{ margin-top:50px; margin-bottom:50px;}
+header, 
+  .level1,
+  .footnotes	{ margin-left:200px;}
+header > *,
+  .level1 > *,
+  .footnotes>*	{ margin-left:5%; margin-right:10%;}
+
+p				{ text-align:justify;}
+figcaption		{ text-align:center;}
+.title			{ text-align:center;}
+.author			{ text-align:center;}
+nav				{ max-width:15%; min-width:200px;left:0;position:fixed;top:0;background-color: #f1f1f1;height:100%;}-->
+nav ul			{ list-style-type: none; margin: 0; padding: 8px 0 8px 0px; width: 100%; }
+nav li a		{ display: block; color: #000; padding: 8px 0 8px 16px; text-decoration: none;}
+nav li a:hover	{ background-color: #555; color: white;}
+
+</style>
