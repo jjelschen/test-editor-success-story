@@ -1,9 +1,10 @@
 ---
-secPrefix: "Section"
-figPrefix: "Figure"
+secPrefix: "Abschnitt"
+figPrefix: "Abbildung"
 secLabels: "roman"
+figureTitle: "Abbildung"
 documentclass: "scrartcl"
-lang: de-DE
+lang: "de"
 header-includes:
 - \usepackage{csquotes}
 title: Der Test-Editor
